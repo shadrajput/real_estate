@@ -74,11 +74,7 @@ const Hero = () => {
             )}
             <div className={`bg-slate-100 ${model && "opacity-78"}`}>
                 <div className="banner w-full h-screen relative overflow-hidden" id='/' >
-                    <LazyLoadImage
-                        alt=""
-                        src="/image/hero.jpg" // use normal <img> attributes as props
-                        effect="blur"
-                    />
+                    <video className="w-full h-full object-cover " src="/image/landing.mp4" autoPlay loop muted />
                     <div className="xl:absolute w-full h-full bottom-0 left-0 ">
                         <div className="absolute bottom-0  w-full h-full flex flex-col justify-center text-center  xl:p-4 space-y-5 px-3 xl:px-10">
                             <h1 className='text-5xl xl:text-6xl font-bold text-white'>Bright Mehndi Looks <span className=''>Awesome</span></h1>
