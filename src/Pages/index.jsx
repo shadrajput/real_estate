@@ -24,8 +24,8 @@ function Home() {
                     </div>
                 </div>
             </Link>
-            {/* <Service/>
-            <Properties/> */}
+            {/* <Service/> */}
+            {/* <Properties/> */}
             <About/>
             {/* <Testimonials/>
             <Contact/> */}
