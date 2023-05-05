@@ -7,27 +7,24 @@ import { Link, Button, Element, Events, animateScroll as scroll, scrollSpy, scro
 function About() {
   return (
     <>
-      <div className='min-h-screen  py-16 ' id='AboutUs'>
-        <div>
-          <div className='heading flex-col '>
-            <h1 className='text-center text-[40px] '>
-              About Us
-            </h1>
-          </div>
+      <div className='min-h-screen flex flex-col justify-center items-center w-full py-16 ' id='AboutUs'>
+        <div className='heading flex-col '>
+          <h1 className='text-center text-[40px] '>
+            About Us
+          </h1>
         </div>
-        <div className='flex items-center justify-center h-full w-full px-20 py-10 space-x-10'>
-          <div className="left w-[50%] flex justify-center items-center h-full">
-            <p className='text-gray-400 mt-20'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illum, totam repudiandae nihil reiciendis sint maiores amet cupiditate nemo? Exercitationem ad quisquam asperiores fugit ipsum perferendis voluptate incidunt dolores est earum!Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illum, totam repudiandae nihil reiciendis sint maiores amet cupiditate nemo? Exercitationem ad quisquam asperiores fugit ipsum perferendis voluptate incidunt dolores est earum!</p>
-          </div>
-          <div className="right w-[50%] justify-center items-center flex flex-col">
-            <div className='flex items-center space-x-10'>
-              <img src="image/pexels-vlad-chețan-3195644.jpg" alt="" className='w-2/4 rounded-lg hover:scale-90 duration-300' />
-              <div className='space-y-10'>
-                <img src="image/pexels-max-rahubovskiy-8082332.jpg" alt="" srcset="" className='w-3/4 shadow-xl shadow-[#06112a3b] hover:scale-90 duration-300 rounded-lg' />
-                <img src="image/pexels-pixabay-210617.jpg" alt="" srcset="" className='w-3/4 shadow-xl shadow-[#06112a3b] hover:scale-90 duration-300 rounded-lg' />
-                <img src="image/pexels-pixabay-280222.jpg" alt="" srcset="" className='w-3/4 shadow-xl shadow-[#06112a3b] hover:scale-90 duration-300 rounded-lg' />
-              </div>
+        <div className='flex justify-center items-center h-full w-[100%] py-16 pl-20 '>
+          <div className="left w-[70%] flex flex-col justify-center items-start h-full space-y-10 ">
+            <h1 className='about_sub_heading  uppercase text-start text-4xl '>Wellcome to <span className='font-bold text-[#06112a] '>fabode</span></h1>
+            <p className='text-gray-400 mt-8 '>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illum, totam repudiandae nihil reiciendis sint maiores amet cupiditate nemo? Exercitationem ad quisquam asperiores fugit ipsum perferendis voluptate incidunt dolores est earum!Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illum, totam repudiandae nihil reiciendis sint maiores amet cupiditate nemo? Exercitationem ad quisquam asperiores fugit ipsum perferendis voluptate incidunt dolores est earum!.Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+            <div className='flex space-x-10 '>
+              <img src="image/pexels-max-rahubovskiy-8082332.jpg" alt="" srcset="" className='w-[30%] shadow-xl shadow-[#06112a3b] hover:scale-90 duration-300 rounded-lg' />
+              <img src="image/pexels-pixabay-210617.jpg" alt="" srcset="" className='w-[30%] shadow-xl shadow-[#06112a3b] hover:scale-90 duration-300 rounded-lg' />
+              <img src="image/pexels-pixabay-280222.jpg" alt="" srcset="" className='w-[30%] shadow-xl shadow-[#06112a3b] hover:scale-90 duration-300 rounded-lg' />
             </div>
+          </div>
+          <div className="right w-[30%] flex justify-center items-center">
+            <img src="image/pexels-vlad-chețan-3195644.jpg" alt="" className='w-2/3 rounded-lg hover:scale-90 duration-300' />
           </div>
         </div>
       </div>

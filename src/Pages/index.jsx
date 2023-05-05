@@ -16,7 +16,7 @@ function Home() {
     return (
         <>
             <Layout />
-            <Hero />
+            {/* <Hero /> */}
             <Link activeClass="active" to="Service" spy={true} smooth={true} offset={-72} duration={500} >
                 <div className='flex justify-center relative bottom-16 xl:bottom-16 '>
                     <div className='flex justify-center w-10 h-10' >
@@ -24,12 +24,12 @@ function Home() {
                     </div>
                 </div>
             </Link>
-            {/* <Service/> */}
+            <Service/>
             {/* <Properties/> */}
             <About/>
-            {/* <Testimonials/>
-            <Contact/> */}
-            <Footer/>
+            <Testimonials/>
+            <Contact/>
+            {/* <Footer/> */}
             <GoToTop/>
         </>
     )
