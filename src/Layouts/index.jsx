@@ -25,11 +25,11 @@ const Layout = () => {
 
     return (
         <>
-            <div className={color ? 'header header-bg bg-[rgb(87,18,23)]' : "header"}>
+            <div className={color ? 'header header-bg bg-[#06112a]' : "header"}>
                 <nav className='navbar xl:px-5 h-full xl:h-[100%] items-center flex justify-between '>
                     <div className='flex justify-center items-center '>
                         <div className='w-40'>
-                            <img src="/logo.png" alt="" srcset="" className='' />
+                            <img src="/image/logo.png" alt="" srcset="" className='' />
                         </div>
                         <div className='hamburger absolute right-4 top-4 md:hidden  xl:hidden t' onClick={handleClick}>
                             {click ? null

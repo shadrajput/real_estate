@@ -1,98 +1,180 @@
-import React, { useRef } from 'react';
-import { Link, Button, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
-import { LazyLoadImage } from 'react-lazy-load-image-component';
-import 'react-lazy-load-image-component/src/effects/blur.css';
-import { AiFillCloseCircle } from "react-icons/ai";
-import emailjs from "emailjs-com";
-import { toast } from 'react-toastify';
-import { useNavigate } from "react-router-dom";
-import { IoIosSend } from 'react-icons/io'
+import { React, useEffect, useState } from 'react';
+
+
+const realEstateData = [
+    {
+        id: 1,
+        type: "House",
+        address: "123 Main St",
+        city: "San Francisco",
+        state: "CA",
+        zipcode: "94103",
+        bedrooms: 3,
+        bathrooms: 2,
+        squareFeet: 2000,
+        price: 1500000,
+        images: "image/pexels-jessica-bryant-1370704.jpg",
+        propertyType: "Single Family Residential",
+        builder: {
+            name: "ABC Builders",
+            website: "https://www.abcbuilder.com",
+            contact: {
+                email: "info@abcbuilder.com",
+                phone: "555-555-5555",
+            },
+        },
+        amenities: ["Swimming pool", "Gym", "Garage"],
+        agentId: 123,
+    },
+    {
+        id: 2,
+        type: "Condo",
+        address: "456 Elm St",
+        city: "Los Angeles",
+        state: "CA",
+        zipcode: "90012",
+        bedrooms: 2,
+        bathrooms: 2,
+        squareFeet: 1200,
+        price: 800000,
+        images: "image/pexels-max-rahubovskiy-8082332.jpg",
+        propertyType: "Multi-Family Residential",
+        builder: {
+            name: "XYZ Developers",
+            website: "https://www.xyzdevelopers.com",
+            contact: {
+                email: "info@xyzdevelopers.com",
+                phone: "555-555-5555",
+            },
+        },
+        amenities: ["Security", "Roof deck", "BBQ area"],
+        agentId: 456,
+    },
+];
+
 
 const Hero = () => {
-    const [model, setModel] = React.useState(false);
-    const form = useRef();
-    const [isLoadingOnSubmit, setIsLoadingOnSubmit] = React.useState(false);
-    const notify = () => toast("Message Send Success!!");
-    const error = () => toast("Some Went Wrong");
-    const navigate = useNavigate();
+    console.log(realEstateData)
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const [progressBar, setProgressBar] = useState(0);
 
-    const handleClick = () => {
-        setModel(false)
-    }
-    const Sendmail = (e) => {
-        e.preventDefault();
-        setIsLoadingOnSubmit(true)
-        emailjs.sendForm("service_36awf6s", "template_vbclm9k", form.current, "kNV5GbduK22MAn4rG")
-            .then(res => {
-                notify()
-                navigate(`/`)
-                setIsLoadingOnSubmit(false)
-                setModel(false)
-                document.getElementById('Name').value = ' '
-                document.getElementById('email').value = ' '
-                document.getElementById('message').value = ' '
-            }).catch(err => {
-                error()
-                setIsLoadingOnSubmit(true)
-            })
-    }
+    const autoScroll = true
+    let slideInterval;
+    let intervalTime = 5000
+
+    const nextSlide = () => {
+        const isLastSlide = currentIndex === realEstateData?.length - 1;
+        const newIndex = isLastSlide ? 0 : currentIndex + 1;
+        setProgressBar(0)
+        setCurrentIndex(newIndex);
+    };
+
+    // function auto() {
+    //     slideInterval = setInterval(nextSlide, intervalTime)
+    // }
+    // useEffect(() => {
+    //     if (autoScroll) {
+    //         auto();
+    //     }
+    //     return () => clearInterval(slideInterval)
+    // }, [currentIndex])
+
+    // useEffect(() => {
+    //     setInterval(() => { setProgressBar((value) => (value + 1) % 67) }, 125)
+    // }, [])
+
+    // const goToSlide = (slideIndex) => {
+    //     setProgressBar(0)
+    //     setCurrentIndex(slideIndex);
+    // };
 
     return (
-        <div className="relative ">
-            {model && (
-                <div className='flex justify-center shadow-2xl  '>
-                    <div className='absolute mx-10 sm:mx-14 opacity-100 shadow-2xl rounded top-16 xl:top-32 bg-white  z-50'>
-                        <div className=''>
-                            <div className='flex justify-end '>
-                                <button onClick={handleClick} className='absolute translate-x-4 -translate-y-4 font-bold text-2xl p-2 text-[#571217] '>
-
-                                    <AiFillCloseCircle />
-                                </button>
-                            </div>
-                            <div className='py-10'>
-                                <h1 className='text-3xl sm:text-3xl  text-center md:text-4xl lg:text-5xl font-semibold text-[#571217]  '>
-                                    Contact Us
-                                </h1>
-                                <div className='xl:px-20 mt-10'>
-                                    <form ref={form} className='xl:w-full mx-5 space-y-5 xl:space-y-10 ' onSubmit={Sendmail} >
-                                        <input type="text" id='Name' name='Name' autoComplete='off' required placeholder='Name' className='w-full outline-none border-b-2 border-b-[#e9dac7]  py-1' />
-                                        <input type="email" id='email' name="email" autoComplete='off' required placeholder='Email' className='w-full outline-none border-b-2 border-b-[#e9dac7]  py-1' />
-                                        <input type="text" id='message' name='message' autoComplete='off' required placeholder='message' className='w-full outline-none border-b-2 border-b-[#e9dac7]  py-1' />
-                                        <div className='flex justify-start items-center '>
-                                            <button disabled={isLoadingOnSubmit} className={`con-btn  ${isLoadingOnSubmit ? "opacity-50 w-[145px]" : "opacity-100"} bg-[#e9dac7] text-[#571217] font-semibold rounded-full w-24 h-10 flex justify-center space-x-1 items-center duration-500 hover:shadow-2xl `}>
-                                                {isLoadingOnSubmit ? 'Sending...' : 'Send'}
-                                                <IoIosSend className='text-[#571217] text-2xl ml-1 ' />
-                                            </button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
+        <>
+            <div className='min-h-screen bg-yellow-700 relative' id='/'>
+                <img src="/image/pexels-max-rahubovskiy-8082332.jpg " alt="" className='absolute h-[700px] w-full' />
+                <div className='bg-gradient-to-t from-black min-h-screen w-full absolute '>
                 </div>
-            )}
-            <div className={`bg-slate-100 ${model && "opacity-78"}`}>
-                <div className="banner w-full h-screen relative overflow-hidden" id='/' >
-                    <video className="w-full h-full object-cover " src="/image/landing.mp4" autoPlay loop muted />
-                    <div className="xl:absolute w-full h-full bottom-0 left-0 ">
-                        <div className="absolute bottom-0  w-full h-full flex flex-col justify-center text-center  xl:p-4 space-y-5 px-3 xl:px-10">
-                            <h1 className='text-5xl xl:text-6xl font-bold text-white'>Bright Mehndi Looks <span className=''>Awesome</span></h1>
-                            <p className='text-white xl:mx-52'>Mehndi is temporary body art of skin. It is most popular in India, Bangladesh, Sri Lanka, and Pakistani women. Also, Indian women are wearing mehndi in Marriage, Vat Purnima, Diwali, Bhai Dooj, Fastible, and Durga Puja.Also, mehndi comes in many colors such as red, white, and black. Most women are wearing to like red color mehndi. Also, comment to us which color Mehendi is your favorite?.</p>
-                            <div onClick={(e) => setModel(true)} >
-                                <span className="relative inline-flex items-center cursor-pointer justify-center px-8 py-2  overflow-hidden 
-                                font-mono font-medium tracking-tighter hover:text-white text-[#571217] bg-[#fff] rounded-lg group">
-                                    <span className="absolute w-0 h-0 transition-all duration-500 ease-out  bg-[#571217] rounded-full group-hover:w-56 group-hover:h-56"></span>
-                                    <span className="relative font-bold">Let's Get Inquiry</span>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
+                <div  className='bg-white absolute left-[25%] top-[50%] w-[50%] py-5 rounded-lg shadow-xl px-5'>
+                    <h2>Details</h2>
                 </div>
             </div>
-        </div>
+        </>
+        // <div className=' min-h-screen bg-yellow-600'>
+        //     {
+        //         realEstateData?.map((item, index) => {
+        //             console.log(item.images)
+        //             return (
+        //                 <div className={index === currentIndex ? 'slide active ' : 'slide'}
+        //                     key={index}>
+        //                     <img src={item.images} alt="" className='' />
+        //                     {/* {index == currentIndex && (
+        //                             <div className='bg-gradient-to-t from-black absolute  '>
 
+        //                             </div>
+        //                         )} */}
+        //                 </div>
+        //             )
+        //         })
+        //     }
 
+        //     {/* {
+        //             slides?.length > 0
+        //                 ?
+        //                 (
+        //                     // <div className='flex  absolute bottom-3 sm:bottom-4 2xl:bottom-10 lg:space-x-8 space-x-7 left-[33%] sm:left-[37%] lg:left-[25%] xl:left-[26%] 2xl:left-[30%]  lg:px-40 '>
+        //                     //   {slides.map((slide, slideIndex) => (
+        //                     //     <div
+        //                     //       key={slideIndex}
+        //                     //       onClick={() => goToSlide(slideIndex)}
+        //                     //       className={slideIndex === currentIndex ? ' text-white lg:border-4 border-2  h-8 w-8 lg:w-12 lg:h-12 border-[#ee6630] rounded-full flex cursor-pointer justify-center items-center hover:text-[#ee6730] duration-300 ' : ' text-gray-500 h-8 w-8  lg:w-12 lg:h-12 flex border-none justify-center items-center hover:text-[#ee6730] cursor-pointer duration-300 font-bold'}
+        //                     //     >
+        //                     //       {slideIndex + 1}
+        //                     //     </div>
+        //                     //   ))}
+        //                     // </div>
+        //                     <div
+        //                         className=" absolute  w-full flex justify-center items-center bottom-3 sm:bottom-4 2xl:bottom-10 lg:space-x-6 space-x-5  "
+        //                     >
+        //                         {
+        //                             slides.map((slide, slideIndex) => {
+        //                                 return (
+        //                                     <div key={slideIndex} className="relative cursor-pointer flex justify-center items-center" onClick={() => goToSlide(slideIndex)}>
+        //                                         <svg className="w-12 h-12 relative rotate-[-90deg] flex justify-center items-center">
+        //                                             <circle
+        //                                                 className="text-gray-500"
+        //                                                 strokeWidth="2"
+        //                                                 stroke="currentColor"
+        //                                                 fill="transparent"
+        //                                                 r="20"
+        //                                                 cx="24"
+        //                                                 cy="24"
+        //                                             />
+        //                                             <circle
+        //                                                 className={`${slideIndex === currentIndex ? 'text-[#ee6730]' : 'text-gray-500'} transition-all`}
+        //                                                 strokeWidth="1.5"
+        //                                                 strokeDasharray={0}
+        //                                                 strokeDashoffset={0}
+        //                                                 strokeLinecap="round"
+        //                                                 stroke="currentColor"
+        //                                                 fill="transparent"
+        //                                                 r="20"
+        //                                                 cx="24"
+        //                                                 cy="24"
+        //                                             />
+        //                                         </svg>
+        //                                         <span className="w-10 absolute text-sm text-white text-center">{slideIndex + 1}</span>
+        //                                     </div>
+        //                                 )
+        //                             })
+        //                         }
+        //                     </div>
+
+        //                 )
+        //                 :
+        //                 null
+        //         } */}
+
+        // </div>
     )
 }
 

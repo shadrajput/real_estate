@@ -20,15 +20,15 @@ function Home() {
             <Link activeClass="active" to="Service" spy={true} smooth={true} offset={-72} duration={500} >
                 <div className='flex justify-center relative bottom-16 xl:bottom-16 '>
                     <div className='flex justify-center w-10 h-10' >
-                        <FaArrowDown className=' animate-bounce h-9 w-9  duration-200  border-2 border-[#fff] hover:text-[#571217]  rounded-full  p-2 cursor-pointer  text-white hover:border-white hover:bg-white  ' />
+                        <FaArrowDown className=' animate-bounce h-9 w-9  duration-200  border-2 border-[#fff] hover:text-[#06112a]  rounded-full  p-2 cursor-pointer  text-white hover:border-white hover:bg-white  ' />
                     </div>
                 </div>
             </Link>
-            <Service/>
+            {/* <Service/>
+            <Properties/> */}
             <About/>
-            <Properties/>
-            <Testimonials/>
-            <Contact/>
+            {/* <Testimonials/>
+            <Contact/> */}
             <Footer/>
             <GoToTop/>
         </>

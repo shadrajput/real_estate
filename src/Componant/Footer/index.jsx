@@ -29,13 +29,13 @@ const Footer = () => {
             </div>
 
           </div>
-          <div className="bg-[#e9dac7] w-full pt-20 sm:pt-12 xl:pt-24 ">
+          <div className="bg-[#06112a] w-full pt-20 sm:pt-12 xl:pt-24 ">
             <div className="py-10 xl:py-16">
               <div className="xl:flex lg:flex justify-between items-center mx-5 xl:mx-52 pb-5 sm:space-y-5 space-y-7 lg:space-y-0">
                 <div className="footer-about xl:space-y-5 lg:space-x-7  sm:space-y-3 space-y-3  ">
                   <div className="xl:mx-10  sm:mx-20 md:mx-44 lg:mx-10 ">
                     <div className='w-40'>
-                      <img src="/logo.jpg" alt="" srcset="" className='rounded-lg shadow-xl' />
+                      <img src="/image/logo.png" alt="" srcset="" className='' />
                     </div>
                   </div>
                   <p className="xl:pt-3 text-[rgba(87,18,23,0.68)] text-center">Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>

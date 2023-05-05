@@ -1,88 +1,24 @@
-.nav-item h1:after {
+.heading 
+{
+  position: relative;
+  width: 100%;
+  letter-spacing: 5px;
+}
+
+.heading h1::after
+{
   content: "";
+  background: #06112a;
   position: absolute;
-  background-color: #ffffff;
-  height: 3px;
-  width: 0;
-  left: 50%;
-  bottom: -5px;
-  transition: .5s ease-out;
+  border-bottom: #06112a 2px solid;
+  left: 47%;
+  bottom: -10%;
+  width: 100px;
 }
 
-.nav-item h1:hover:after {
-  left: 0%;
-  width: 100%;
-}
-
-.active h1:after{
-  background-color: #ee6730;
-  left: 0%;
-  width: 100%;
-}
-
-.active{
-  color: #ee6730;
-  /* left: 0%;
-  width: 100%; */
-}
-
-.active > svg{
-  color: #ee6730
-}
-
-.non-active{
-  color: gray
-}
-
-
-/* Scrollbar style for browser */
-
-/* width */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: rgb(177, 177, 177);
-}
-
-
-/* Scrollbar style for table in responsive */
-
-.table-container::-webkit-scrollbar {
-  height: 4px;
-}
-
-.table-container::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
-
-.table-container::-webkit-scrollbar-thumb {
-  background: rgb(177, 177, 177);
-  border-radius: 5px;
-}
-
-
-
-/* Privat-Navbar Dropdown-Menu */
-.dropdown-menu.active {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-  transition: .4s ease-in-out;
-}
-
-.dropdown-menu.inactive {
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(-20px);
-  transition: .4s ease-in-out;
+.about_sub_heading  
+{
+  letter-spacing: 10px;
 }
 
 /* Dashboard */
@@ -97,16 +33,3 @@
   transition-duration: 1s;
   transform: scale(1.08);
 }
-
-.landing-sub
-{
-  letter-spacing: 10px;
-}
-
-.role-heading 
-{
-  letter-spacing: 7px;
-}
-
-
-

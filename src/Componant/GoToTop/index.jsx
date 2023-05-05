@@ -29,7 +29,7 @@ const GoToTop = () => {
             {isVisible && (
                 <div className='flex justify-end' onClick={gototop}>
                     <div className='flex justify-center fixed bottom-5 mr-5  w-10 h-10' >
-                        <FaArrowUp className='animate-bounce h-9 w-9  duration-75  hover:bg-white hover:border hover:border-[#571217]  hover:text-[#571217]  rounded-full  p-2 cursor-pointer  text-white bg-[#571217] ' />
+                        <FaArrowUp className='animate-bounce h-9 w-9  duration-75  hover:bg-white hover:border hover:border-[#06112a]  hover:text-[#06112a]  rounded-full  p-2 cursor-pointer  text-white bg-[#06112a] ' />
                     </div>
                 </div>
             )}
