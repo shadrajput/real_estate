@@ -40,7 +40,7 @@ const Contact = () => {
             <div className='flex justify-center py-16'>
                 <div className='w-full  h-full sm:flex md:flex lg:flex xl:flex justify-center mx-10 sm:mx-5 items-center md:mx-14 lg:mx-14 xl:mx-20 drop-shadow-2xl rounded-xl  '>
                     <div className='sm:w-[50%] xl:w-[50%] xl:justify-end flex  relative'>
-                        <img src="/image/pexels-julia-kuzenkov-1974596.jpg" alt="" className='xl:rounded-l-lg rounded-t-xl  w-full' />
+                        <img src="/image/pexels-julia-kuzenkov-1974596.jpg" alt="" className='xl:rounded-l-lg w-full' />
                     </div>
                     <div className='sm:w-[50%] xl:w-[50%] h-full  flex justify-center py-5 xl:py-14 px-5'>
                         <div className='left w-full xl:mx-20 '>
